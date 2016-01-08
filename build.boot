@@ -14,12 +14,14 @@
    [adzerk/boot-cljs          "1.7.48-6"   :scope "test"]
    [adzerk/boot-cljs-repl     "0.2.0"      :scope "test"]
    [adzerk/boot-reload        "0.4.1"      :scope "test"]
+   [pandeiro/boot-http        "0.7.0"      :scope "test"]
    [crisptrutski/boot-cljs-test "0.2.0-SNAPSHOT" :scope "test"]])
 
 (require
  '[adzerk.boot-cljs      :refer [cljs]]
  '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]]
  '[adzerk.boot-reload    :refer [reload]]
+ '[pandeiro.boot-http    :refer [serve]]
  '[crisptrutski.boot-cljs-test :refer [test-cljs]])
 
 
@@ -28,8 +30,6 @@
 
 (task-options!
  reload {:ws-host (.getHostAddress (java.net.Inet4Address/getLocalHost))})
-
-(require '[clojure.java.shell :as shell])
 
 (deftask build []
   (comp (cljs)))

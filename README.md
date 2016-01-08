@@ -11,6 +11,7 @@ Prerequisite: you must have cordova installed and the ios and android toolchain.
 Run the following in one terminal
 
 ```bash
+cordova plugins add cordova-plugin-whitelist
 cordova platforms add browser
 cordova platforms add ios
 cordova platforms add android

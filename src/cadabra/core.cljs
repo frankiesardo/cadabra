@@ -1,4 +1,5 @@
-(ns cadabra.core)
+(ns cadabra.core
+  (:import [goog.net XhrIo]))
 
 (enable-console-print!)
 
