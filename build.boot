@@ -13,7 +13,7 @@
 
    [adzerk/boot-cljs          "1.7.48-6"   :scope "test"]
    [adzerk/boot-cljs-repl     "0.2.0"      :scope "test"]
-   [adzerk/boot-reload        "0.4.1"      :scope "test"]
+   [adzerk/boot-reload        "0.4.3-SNAPSHOT"      :scope "test"]
    [pandeiro/boot-http        "0.7.0"      :scope "test"]
    [crisptrutski/boot-cljs-test "0.2.0-SNAPSHOT" :scope "test"]])
 
@@ -24,18 +24,20 @@
  '[pandeiro.boot-http    :refer [serve]]
  '[crisptrutski.boot-cljs-test :refer [test-cljs]])
 
+(def host (.getHostAddress (java.net.Inet4Address/getLocalHost)))
 
 (task-options!
- test-cljs {:js-env :phantom})
-
-(task-options!
- reload {:ws-host (.getHostAddress (java.net.Inet4Address/getLocalHost))})
+ serve  {:dir "/"
+         :port 3000}
+ reload {:ws-host host
+         :asset-host (str "http://" host ":3000")})
 
 (deftask build []
   (comp (cljs)))
 
 (deftask run []
-  (comp (watch)
+  (comp (serve)
+        (watch)
         (cljs-repl)
         (reload)
         (speak)
@@ -59,13 +61,16 @@
         (run)
         #_(test-cljs)))
 
+;; Tests
+
+(ns-unmap 'boot.user 'test)
 
 (deftask testing []
   (set-env! :source-paths #(into % #{"test"}))
   identity)
 
-
-(ns-unmap 'boot.user 'test)
+(task-options!
+ test-cljs {:js-env :phantom})
 
 (deftask test []
   (comp (testing)
