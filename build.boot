@@ -13,7 +13,7 @@
 
    [adzerk/boot-cljs          "1.7.48-6"   :scope "test"]
    [adzerk/boot-cljs-repl     "0.2.0"      :scope "test"]
-   [adzerk/boot-reload        "0.4.3-SNAPSHOT"      :scope "test"]
+   [adzerk/boot-reload        "0.4.3"      :scope "test"]
    [pandeiro/boot-http        "0.7.0"      :scope "test"]
    [crisptrutski/boot-cljs-test "0.2.0-SNAPSHOT" :scope "test"]])
 
