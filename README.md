@@ -30,3 +30,7 @@ cordova run browser
 Cordova will by default open up a Chrome tab, an iOS simulator and an Android emulator.
 
 Changes in `src/cadabra/core.cljs` should be pushed to the three platforms simultaneously.
+
+### Profit
+
+![](https://cloud.githubusercontent.com/assets/1476561/12195531/c03db150-b5ef-11e5-9f23-e2982fb84288.png)
